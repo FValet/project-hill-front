@@ -1,39 +1,44 @@
 <template>
-  <div class="container grid grid-cols-12 gap-4 md:gap-12">
-    <h1 class="col-span-12 text-2xl font-bold text-center uppercase">Areas</h1>
-    <div class="grid grid-cols-12 col-span-12 gap-4 md:gap-12">
-      <div
-        :class="`col-span-6 px-2 pt-8 pb-2 text-center border rounded md:col-span-4 relative ${
-          area.attributes.unlocked
-            ? 'cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800'
-            : 'cursor-not-allowed hover:bg-gray-600'
-        }`"
-        v-for="area in areas"
-        :key="area.id"
-        @click="$router.push(`/area/${area.id}`)"
+  <div class="container grid grid-cols-12 gap-4 lg:gap-12">
+    <h1 class="col-span-12 text-2xl font-bold text-center uppercase">
+      Project Hill
+    </h1>
+    <div class="col-span-12 grid grid-cols-12 gap-5">
+      <nuxt-link
+        to="/area"
+        class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
       >
-        <div class="absolute top-0 right-0 flex gap-2 p-1">
-          <img
-            :src="`/icons/ui/${
-              area.attributes.unlocked ? 'padlock-open' : 'padlock-close'
-            }.svg`"
-            class="w-6"
-          />
-          <img
-            :src="`/icons/ui/${
-              area.attributes.completed ? 'check-mark-green' : 'check-mark-red'
-            }.svg`"
-            class="w-6"
-          />
-        </div>
-        <span>{{ area.attributes.name }}</span>
-      </div>
+        <span class="text-xl text-center w-full">Areas</span>
+        <img src="/icons/ui/slalom.svg" class="w-16" />
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
+      >
+        <span class="text-xl text-center w-full">Areas</span>
+        <img src="/icons/ui/slalom.svg" class="w-16" />
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
+      >
+        <span class="text-xl text-center w-full">Areas</span>
+        <img src="/icons/ui/slalom.svg" class="w-16" />
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
+      >
+        <span class="text-xl text-center w-full">Areas</span>
+        <img src="/icons/ui/slalom.svg" class="w-16" />
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted, useContext } from '@nuxtjs/composition-api'
+import { ref, onMounted, useContext, computed } from '@nuxtjs/composition-api'
+import { useHeroStore } from '~/store/hero'
 
 export default {
   name: 'IndexPage',
@@ -41,15 +46,19 @@ export default {
 
   setup() {
     const { $strapi } = useContext()
+    const heroStore = useHeroStore()
+
+    const hero = computed(() => heroStore.hero)
 
     const areas = ref([])
 
     onMounted(async () => {
+      await heroStore.getHero()
       const { data } = await $strapi.find('areas')
       areas.value = data
     })
 
-    return { areas }
+    return { areas, hero }
   },
 }
 </script>
