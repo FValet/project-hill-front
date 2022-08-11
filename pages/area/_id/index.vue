@@ -1,17 +1,17 @@
 <template>
-  <div v-if="loaded" class="container grid grid-cols-12 gap-4 md:gap-12">
+  <div v-if="loaded" class="container grid grid-cols-12 gap-4 lg:gap-12">
     <h1 class="col-span-12 text-2xl font-bold text-center uppercase">
       {{ area.attributes.name }}
     </h1>
-    <div class="grid grid-cols-12 col-span-12 gap-4 md:gap-12">
+    <div class="grid grid-cols-12 col-span-12 gap-4 lg:gap-12">
       <div
-        :class="`col-span-6 px-2 pt-8 pb-2 text-center border rounded md:col-span-4 relative ${
+        v-for="stage in getAreaStages()"
+        :key="stage.id"
+        :class="`col-span-6 px-2 py-8 text-center border rounded lg:col-span-4 relative ${
           stage.attributes.unlocked
             ? 'cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800'
             : 'cursor-not-allowed hover:bg-gray-600'
         }`"
-        v-for="stage in getAreaStages()"
-        :key="stage.id"
         @click="$router.push(`/area/${area.id}/stage/${stage.id}`)"
       >
         <div class="absolute top-0 right-0 flex gap-2 p-1">
@@ -31,9 +31,9 @@
         <span>Stage {{ stage.id }}</span>
       </div>
     </div>
-    <div class="fixed bottom-0 col-span-12 mx-auto mb-4">
+    <div class="col-span-12 mx-auto mt-4">
       <nuxt-link
-        to="/"
+        to="/area"
         class="px-4 py-2 font-bold text-black bg-gray-200 border border-black rounded"
       >
         Back
@@ -56,7 +56,6 @@ export default {
     const area = ref({})
 
     onMounted(async () => {
-      console.log(route.value.params)
       const id = route.value.params.id
       const { data } = await $strapi.findOne('areas', id, { populate: '*' })
       area.value = data

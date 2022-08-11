@@ -1,13 +1,13 @@
 <template>
-  <div v-if="loaded" class="container grid grid-cols-12 gap-4 md:gap-12">
+  <div v-if="loaded" class="container grid grid-cols-12 gap-4 lg:gap-12">
     <h1
-      class="flex flex-col col-span-12 gap-4 text-2xl font-bold text-center uppercase md:gap-12"
+      class="flex flex-col pb-6 col-span-12 gap-4 text-2xl font-bold text-center uppercase lg:gap-12"
     >
       <span>{{ stage.attributes.area.data.attributes.name }}</span>
       <!-- TODO: replace stage.id by index of stage in area's stages -->
       <span>Stage {{ stage.id }}</span>
     </h1>
-    <div class="flex flex-col col-span-12 gap-4 p-4 border md:gap-12">
+    <div class="flex flex-col col-span-12 gap-4 p-4 border lg:gap-12">
       <div class="flex flex-col gap-2">
         <h2 class="underline">Opponents:</h2>
         <div class="flex justify-around">
@@ -22,13 +22,13 @@
       <div class="flex flex-col gap-2">
         <h2 class="underline">Reward:</h2>
         <div class="grid grid-cols-12 gap-4">
-          <div class="flex flex-col col-span-6 md:col-span-3">
+          <div class="flex flex-col col-span-6 lg:col-span-3">
             <span>money:</span><span>{{ stage.attributes.reward.money }}</span>
           </div>
-          <div class="flex flex-col col-span-6 md:col-span-3">
+          <div class="flex flex-col col-span-6 lg:col-span-3">
             <span>xp:</span><span>{{ stage.attributes.reward.xp }}</span>
           </div>
-          <div class="flex flex-col col-span-12 md:col-span-6">
+          <div class="flex flex-col col-span-12 lg:col-span-6">
             <span>obtainable items:</span><span>{{ getRewardItems() }}</span>
           </div>
         </div>
@@ -43,7 +43,7 @@
         Fight
       </nuxt-link>
     </div>
-    <div class="fixed bottom-0 col-span-12 mx-auto mb-4">
+    <div class="col-span-12 mx-auto mt-4">
       <nuxt-link
         :to="`/area/${stage.attributes.area.data.id}`"
         class="px-4 py-2 font-bold text-black bg-gray-200 border border-black rounded"
