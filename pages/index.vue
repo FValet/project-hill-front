@@ -15,22 +15,22 @@
         to="/"
         class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
       >
-        <span class="text-xl text-center w-full">Areas</span>
-        <img src="/icons/ui/slalom.svg" class="w-16" />
+        <span class="text-xl text-center w-full">TODO</span>
+        <img src="/icons/ui/square.svg" class="w-16" />
       </nuxt-link>
       <nuxt-link
         to="/"
         class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
       >
-        <span class="text-xl text-center w-full">Areas</span>
-        <img src="/icons/ui/slalom.svg" class="w-16" />
+        <span class="text-xl text-center w-full">TODO</span>
+        <img src="/icons/ui/square.svg" class="w-16" />
       </nuxt-link>
       <nuxt-link
         to="/"
         class="col-span-12 flex justify-around items-center p-4 text-center border rounded lg:col-span-4 relative cursor-pointer hover:border-gray-800 hover:bg-white hover:text-gray-800"
       >
-        <span class="text-xl text-center w-full">Areas</span>
-        <img src="/icons/ui/slalom.svg" class="w-16" />
+        <span class="text-xl text-center w-full">TODO</span>
+        <img src="/icons/ui/square.svg" class="w-16" />
       </nuxt-link>
     </div>
   </div>
