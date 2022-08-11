@@ -5,6 +5,10 @@
     <div class="flex">
       <span class="mr-1">xp:</span>
       <div class="relative flex justify-center w-48 h-4 items-center">
+        <!-- <progress-bar
+          :value="hero.attributes.collected_xp"
+          :max="level.required_xp"
+        /> -->
         <div
           :class="`h-full ${
             result.progress === 100 ? 'rounded' : 'rounded-l'
@@ -30,7 +34,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from '@nuxtjs/composition-api'
+import { ref, onMounted, computed, watch } from '@nuxtjs/composition-api'
 import { useHeroStore } from '~/store/hero'
 
 export default {
@@ -45,13 +49,24 @@ export default {
     const result = ref({ progress: 0, rest: 0 })
 
     onMounted(() => {
+      getProgressBarData()
+      loaded.value = true
+    })
+
+    function getProgressBarData() {
       const progress = Math.ceil(
         (100 / level.value.required_xp) * hero.value.attributes.collected_xp
       )
       result.value.progress = progress > 100 ? 100 : progress
       result.value.rest = 100 - progress
-      loaded.value = true
-    })
+    }
+
+    watch(
+      () => hero.value.attributes.collected_xp,
+      (newValue, oldValue) => {
+        getProgressBarData()
+      }
+    )
 
     return { loaded, hero, level, result }
   },

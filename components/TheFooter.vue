@@ -4,7 +4,7 @@
       <img src="/icons/ui/hero-no-bg.svg" class="w-8" />
     </nuxt-link>
     <nuxt-link to="/">
-      <img src="/icons/ui/summits.svg" class="w-8" />
+      <img src="/icons/ui/stabbed-note.svg" class="w-8" />
     </nuxt-link>
     <nuxt-link to="/inventory">
       <img src="/icons/ui/backpack.svg" class="w-8" />
