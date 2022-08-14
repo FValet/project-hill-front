@@ -1,0 +1,12 @@
+TODO:
+
+- Gérer la loose de combat
+- empecher de lancer la fonction fight si win / loose
+- dynamiser la modale
+- revoir marge globale, un p-4 à été enlever sur <Nuxt/> pour la modale
+- modification des stat en cas de level up
+- afficher le récap du tour héro et opponent avec un délais
+- ajouter équipement
+- voir comment introduire au joueur l'equipement / potions
+- split l'inventaire en consommable / equipement
+- pouvoir ajouter un equipement depuis linventaire et / ou la fiche recap du hero

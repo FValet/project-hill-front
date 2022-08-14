@@ -5,7 +5,7 @@
   >
     <the-header class="sticky z-10 top-0" />
     <div class="py-8 h-full">
-      <Nuxt class="mx-auto p-4" />
+      <Nuxt class="mx-auto" />
     </div>
     <the-footer class="sticky z-10 bottom-0" />
   </div>
